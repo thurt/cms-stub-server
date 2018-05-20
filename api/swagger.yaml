@@ -462,6 +462,10 @@ definitions:
         type: "integer"
         format: "int64"
     title: "AccessToken"
+    example:
+      expiresIn: 0
+      accessToken: "accessToken"
+      tokenType: "tokenType"
   cmsAuthUserRequest:
     type: "object"
     properties:
@@ -487,6 +491,13 @@ definitions:
       postId:
         type: "string"
     title: "Comment"
+    example:
+      created: "created"
+      id: 0
+      lastEdited: "lastEdited"
+      postId: "postId"
+      userId: "userId"
+      content: "content"
   cmsCommentRequest:
     type: "object"
     properties:
@@ -494,6 +505,8 @@ definitions:
         type: "integer"
         format: "int64"
     title: "CommentRequest"
+    example:
+      id: 0
   cmsCreateCommentRequest:
     type: "object"
     properties:
@@ -540,6 +553,13 @@ definitions:
       slug:
         type: "string"
     title: "Post"
+    example:
+      created: "created"
+      id: 0
+      lastEdited: "lastEdited"
+      title: "title"
+      content: "content"
+      slug: "slug"
   cmsPostRequest:
     type: "object"
     properties:
@@ -547,6 +567,8 @@ definitions:
         type: "integer"
         format: "int64"
     title: "PostRequest"
+    example:
+      id: 0
   cmsUnpublishedPost:
     type: "object"
     properties:
@@ -558,6 +580,16 @@ definitions:
       last_published:
         type: "string"
     title: "Unpublished Post"
+    example:
+      post:
+        created: "created"
+        id: 0
+        lastEdited: "lastEdited"
+        title: "title"
+        content: "content"
+        slug: "slug"
+      published: true
+      last_published: "last_published"
   cmsUpdateCommentRequest:
     type: "object"
     properties:
@@ -595,6 +627,12 @@ definitions:
       role:
         $ref: "#/definitions/cmsUserRole"
     title: "User"
+    example:
+      role: {}
+      lastActive: "lastActive"
+      created: "created"
+      id: "id"
+      email: "email"
   cmsUserPassword:
     type: "object"
     properties:
@@ -607,6 +645,8 @@ definitions:
       id:
         type: "string"
     title: "UserRequest"
+    example:
+      id: "id"
   cmsUserRole:
     type: "string"
     title: "UserRole"
@@ -630,6 +670,8 @@ definitions:
         description: "The bool value."
     description: "Wrapper message for `bool`.\n\nThe JSON representation for `BoolValue`\
       \ is JSON `true` and `false`."
+    example:
+      value: true
   protobufEmpty:
     type: "object"
     title: "A generic empty message that you can re-use to avoid defining duplicated\n\

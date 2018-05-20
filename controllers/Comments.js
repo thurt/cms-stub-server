@@ -1,25 +1,59 @@
 'use strict';
 
-var url = require('url');
-
-var Comments = require('./CommentsService');
+var utils = require('../utils/writer.js');
+var Comments = require('../service/CommentsService');
 
 module.exports.createComment = function createComment (req, res, next) {
-  Comments.createComment(req.swagger.params, res, next);
+  var body = req.swagger.params['body'].value;
+  Comments.createComment(body)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
 };
 
 module.exports.deleteComment = function deleteComment (req, res, next) {
-  Comments.deleteComment(req.swagger.params, res, next);
+  var id = req.swagger.params['id'].value;
+  Comments.deleteComment(id)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
 };
 
 module.exports.getComment = function getComment (req, res, next) {
-  Comments.getComment(req.swagger.params, res, next);
+  var id = req.swagger.params['id'].value;
+  Comments.getComment(id)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
 };
 
 module.exports.getComments = function getComments (req, res, next) {
-  Comments.getComments(req.swagger.params, res, next);
+  Comments.getComments()
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
 };
 
 module.exports.updateComment = function updateComment (req, res, next) {
-  Comments.updateComment(req.swagger.params, res, next);
+  var id = req.swagger.params['id'].value;
+  var body = req.swagger.params['body'].value;
+  Comments.updateComment(id,body)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
 };

@@ -1,13 +1,26 @@
 'use strict';
 
-var url = require('url');
-
-var Auth = require('./AuthService');
+var utils = require('../utils/writer.js');
+var Auth = require('../service/AuthService');
 
 module.exports.authUser = function authUser (req, res, next) {
-  Auth.authUser(req.swagger.params, res, next);
+  var body = req.swagger.params['body'].value;
+  Auth.authUser(body)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
 };
 
 module.exports.logout = function logout (req, res, next) {
-  Auth.logout(req.swagger.params, res, next);
+  var body = req.swagger.params['body'].value;
+  Auth.logout(body)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
 };

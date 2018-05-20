@@ -1,17 +1,37 @@
 'use strict';
 
-var url = require('url');
-
-var Users = require('./UsersService');
+var utils = require('../utils/writer.js');
+var Users = require('../service/UsersService');
 
 module.exports.deleteUser = function deleteUser (req, res, next) {
-  Users.deleteUser(req.swagger.params, res, next);
+  var id = req.swagger.params['id'].value;
+  Users.deleteUser(id)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
 };
 
 module.exports.getUser = function getUser (req, res, next) {
-  Users.getUser(req.swagger.params, res, next);
+  var id = req.swagger.params['id'].value;
+  Users.getUser(id)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
 };
 
 module.exports.getUserComments = function getUserComments (req, res, next) {
-  Users.getUserComments(req.swagger.params, res, next);
+  var id = req.swagger.params['id'].value;
+  Users.getUserComments(id)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
 };
